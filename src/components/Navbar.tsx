@@ -61,18 +61,18 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg glass-pill text-white/70 hover:text-white transition-all duration-200"
-            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}>
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <SearchBar />
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg glass-pill text-white/70 hover:text-white transition-all duration-200"
+              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}>
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
           <div className="py-4 space-y-1">
-            <div className="px-4 pb-3">
-              <SearchBar />
-            </div>
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href)}
                 className="block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 text-white/60 hover:bg-white/[0.06] hover:text-white">

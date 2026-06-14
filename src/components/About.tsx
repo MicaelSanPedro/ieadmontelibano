@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { BookOpen, Eye, Heart, Users, Church, Globe } from "lucide-react";
+import { BookOpen, Heart, Users, Globe } from "lucide-react";
 
 const values = [
   { icon: BookOpen, title: "Palavra de Deus", description: "Fundamentados nas Sagradas Escrituras como nossa regra de fé e prática, buscamos a cada dia conhecer mais do Senhor através da Sua Palavra." },
@@ -45,24 +45,6 @@ export default function About() {
             </div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-white/[0.06] rounded-2xl -z-10" />
             <div className="absolute -top-4 -left-4 w-24 h-24 border border-white/[0.06] rounded-2xl -z-10" />
-          </div>
-        </div>
-
-        {/* Vision / Mission */}
-        <div className={`grid md:grid-cols-2 gap-8 mb-20 transition-all duration-700 delay-300 ${v ? "animate-fade-in-up" : "opacity-0"}`}>
-          <div className="glass-elevated glass-hover rounded-2xl p-8">
-            <div className="relative z-10">
-              <div className="glass-icon w-14 h-14 rounded-xl flex items-center justify-center mb-6"><Eye className="w-7 h-7 text-white/60" /></div>
-              <h3 className="text-2xl font-bold text-white mb-4">Nossa Visão</h3>
-              <p className="text-white/50 leading-relaxed">Ser uma igreja referência na pregação do Evangelho pleno, formando discípulos comprometidos com Cristo, capacitados para impactar a sociedade com o amor de Deus e transformando vidas através do poder do Espírito Santo em Rondonópolis e além.</p>
-            </div>
-          </div>
-          <div className="btn-glass-white glass-hover rounded-2xl p-8">
-            <div className="relative z-10">
-              <div className="w-14 h-14 rounded-xl bg-dark-600/10 flex items-center justify-center mb-6"><Church className="w-7 h-7 text-dark-600" /></div>
-              <h3 className="text-2xl font-bold text-dark-600 mb-4">Nossa Missão</h3>
-              <p className="text-dark-600/70 leading-relaxed">Adorar a Deus em espírito e em verdade, proclamar as boas novas da salvação em Jesus Cristo, edificar os santos na fé e servir ao próximo com amor e excelência, sendo agentes de transformação na nossa comunidade.</p>
-            </div>
           </div>
         </div>
 
