@@ -32,8 +32,8 @@ export default function LoadingScreen() {
       <div className="relative w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center">
         {/* Single SVG spinner — GPU compositing only (transform: rotate) */}
         <svg
-          className="absolute inset-0 w-full h-full"
-          style={{ animation: "spin 1.6s linear infinite", willChange: "transform" }}
+          className="absolute inset-0 w-full h-full animate-spin"
+          style={{ animationDuration: "1.6s", willChange: "transform" }}
           viewBox="0 0 100 100"
           fill="none"
         >
