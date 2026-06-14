@@ -7,10 +7,12 @@ import Events from "@/components/Events";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   return (
     <main className="flex-1">
+      <LoadingScreen />
       <Navbar />
       <Hero />
       <About />
