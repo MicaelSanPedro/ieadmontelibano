@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Heart, ArrowUp } from "lucide-react";
+import { MapPin, Phone, Mail, Heart } from "lucide-react";
 import Image from "next/image";
 
 const quickLinks = [
@@ -73,7 +73,6 @@ export default function Footer() {
           <p className="text-white/15 text-sm flex items-center gap-1">Feito com <Heart className="w-3.5 h-3.5 text-white/30 fill-white/30" /> para a glória de Deus</p>
         </div>
       </div>
-      <button onClick={scroll} className="fixed bottom-6 right-6 btn-glass-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 z-40" aria-label="Voltar ao topo"><ArrowUp className="w-5 h-5 text-dark-600" /></button>
     </footer>
   );
 }
