@@ -37,10 +37,9 @@ export default function Hero() {
           <span className="text-sm text-white/80 font-medium tracking-wide">Igreja Evangélica Assembleia de Deus</span>
         </div>
 
-        <h1 className="animate-fade-in-up animation-delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">
-          <span className="text-gradient-white">IEAD</span>
+        <h1 className="animate-fade-in-up animation-delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+          <span className="text-gradient-white" style={{ filter: "drop-shadow(0 0 24px rgba(255,255,255,0.6)) drop-shadow(0 0 60px rgba(160,180,208,0.4))" }}>IEAD MONTE LÍBANO</span>
         </h1>
-        <p className="animate-fade-in-up animation-delay-200 text-lg sm:text-xl md:text-2xl text-white/90 font-medium mb-2">Assembleia de Deus</p>
         <p className="animate-fade-in-up animation-delay-300 text-sm sm:text-base text-white/40 font-medium tracking-wider uppercase mb-8">Rondonópolis — MT</p>
 
         <p className="animate-fade-in-up animation-delay-400 text-lg sm:text-xl md:text-2xl text-white/60 max-w-3xl mx-auto mb-10 leading-relaxed">
