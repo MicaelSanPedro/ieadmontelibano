@@ -77,18 +77,14 @@ export default function Footer() {
       <div className="border-t border-white/[0.04]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-sm text-center sm:text-left">&copy; {new Date().getFullYear()} IEAD Rondonópolis. Todos os direitos reservados.</p>
-          <div className="flex items-center gap-2">
-            <span className="text-white/15 text-sm flex items-center gap-1">Feito para a glória de Deus</span>
-            <span className="text-white/10">·</span>
-            <a href="https://instagram.com/micael__san" target="_blank" rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-1.5 text-white/25 hover:text-white/50 transition-all duration-300">
-              <span className="absolute -inset-1.5 bg-gradient-to-r from-purple-500/0 via-pink-500/0 to-orange-500/0 group-hover:from-purple-500/10 group-hover:via-pink-500/10 group-hover:to-orange-500/10 rounded-full blur-sm transition-all duration-300" />
-              <svg className="w-3.5 h-3.5 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-              <span className="text-xs font-medium tracking-wider relative">@micael__san</span>
-            </a>
-          </div>
+          <a href="https://instagram.com/micael__san" target="_blank" rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-2 text-white/30 hover:text-white/60 transition-all duration-300">
+            <span className="text-sm font-medium relative">Feito com <Heart className="w-3.5 h-3.5 inline text-pink-400/50 fill-pink-400/50 group-hover:text-pink-400 group-hover:fill-pink-400 transition-colors duration-300" /> por:</span>
+            <span className="text-base font-bold tracking-wide relative">@micael__san</span>
+            <svg className="w-5 h-5 relative text-white/25 group-hover:text-pink-400/70 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
