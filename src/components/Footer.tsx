@@ -23,7 +23,14 @@ export default function Footer() {
   const nav = (e: React.MouseEvent, href: string) => { e.preventDefault(); const t = document.querySelector(href); if (t) t.scrollIntoView({ behavior: "smooth" }); };
 
   return (
-    <footer className="bg-dark-700 text-white relative">
+    <footer className="bg-dark-700 text-white relative overflow-hidden">
+      {/* Marca d'água grande */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none select-none overflow-hidden">
+        <p className="text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] font-black uppercase tracking-[0.15em] leading-none text-white/[0.02] text-center whitespace-nowrap py-0" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
+          Micael San Pedro
+        </p>
+      </div>
+
       <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
