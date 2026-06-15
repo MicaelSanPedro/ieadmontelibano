@@ -16,7 +16,7 @@ export default function Hero() {
   const scroll = (sel: string) => { const t = document.querySelector(sel); if (t) t.scrollIntoView({ behavior: "smooth" }); };
 
   return (
-    <section id="inicio" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="inicio" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1920&q=80')" }} />
       <div className="hero-overlay absolute inset-0" />
       <div className="hero-pattern absolute inset-0" />

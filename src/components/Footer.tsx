@@ -70,7 +70,19 @@ export default function Footer() {
       <div className="border-t border-white/[0.04]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-sm text-center sm:text-left">&copy; {new Date().getFullYear()} IEAD Rondonópolis. Todos os direitos reservados.</p>
-          <p className="text-white/15 text-sm flex items-center gap-1">Feito com <Heart className="w-3.5 h-3.5 text-white/30 fill-white/30" /> para a glória de Deus</p>
+          <div className="flex items-center gap-2">
+            <span className="text-white/15 text-sm flex items-center gap-1">Feito com <Heart className="w-3.5 h-3.5 text-white/30 fill-white/30" /> para a glória de Deus</span>
+            <span className="text-white/10">·</span>
+            <a href="https://instagram.com/sanpedro.dev" target="_blank" rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-1.5 text-white/25 hover:text-white/50 transition-all duration-300">
+              <span className="absolute -inset-1.5 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 rounded-full blur-sm transition-all duration-300" />
+              <svg className="w-3.5 h-3.5 relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+              </svg>
+              <span className="text-xs font-medium tracking-wider relative">MSP</span>
+              <span className="text-[10px] font-light text-white/15 relative">/ Micael San Pedro</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
