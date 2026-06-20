@@ -7,8 +7,31 @@ export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const [v, setV] = useState(false);
   const [ok, setOk] = useState(false);
+  const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => { const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: 0.1 }); if (ref.current) o.observe(ref.current); return () => o.disconnect(); }, []);
-  const submit = (e: React.FormEvent) => { e.preventDefault(); setOk(true); setTimeout(() => setOk(false), 4000); };
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErr("");
+    setLoading(true);
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      subject: (form.elements.namedItem("subject") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+    try {
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+      const json = await res.json();
+      if (!res.ok) { setErr(json.error || "Erro ao enviar."); return; }
+      setOk(true);
+      form.reset();
+      setTimeout(() => setOk(false), 5000);
+    } catch { setErr("Erro de conexão. Tente novamente."); }
+    finally { setLoading(false); }
+  };
 
   const infoCards = [
     { icon: MapPin, title: "Endereço", lines: ["Bairro Monte Líbano", "Rondonópolis — MT"] },
@@ -66,13 +89,14 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={submit} className="space-y-5">
+                  {err && <div className="glass rounded-xl px-4 py-3 text-sm text-red-300/80 border border-red-400/15">{err}</div>}
                   <div className="grid sm:grid-cols-2 gap-5">
-                    <div><label htmlFor="name" className="block text-sm font-semibold text-white/70 mb-2">Nome Completo</label><input type="text" id="name" required placeholder="Seu nome" className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm" /></div>
-                    <div><label htmlFor="phone" className="block text-sm font-semibold text-white/70 mb-2">Telefone</label><input type="tel" id="phone" placeholder="(00) 00000-0000" className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm" /></div>
+                    <div><label htmlFor="name" className="block text-sm font-semibold text-white/70 mb-2">Nome Completo</label><input type="text" id="name" name="name" required placeholder="Seu nome" className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm" /></div>
+                    <div><label htmlFor="phone" className="block text-sm font-semibold text-white/70 mb-2">Telefone</label><input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm" /></div>
                   </div>
-                  <div><label htmlFor="email" className="block text-sm font-semibold text-white/70 mb-2">E-mail</label><input type="email" id="email" required placeholder="seuemail@exemplo.com" className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm" /></div>
+                  <div><label htmlFor="email" className="block text-sm font-semibold text-white/70 mb-2">E-mail</label><input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com" className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm" /></div>
                   <div><label htmlFor="subject" className="block text-sm font-semibold text-white/70 mb-2">Assunto</label>
-                    <select id="subject" required className="w-full glass-input px-4 py-3 rounded-xl text-white text-sm">
+                    <select id="subject" name="subject" required className="w-full glass-input px-4 py-3 rounded-xl text-white text-sm">
                       <option value="" className="bg-dark-500">Selecione um assunto</option>
                       <option value="info" className="bg-dark-500">Informações sobre cultos</option>
                       <option value="visita" className="bg-dark-500">Agendar uma visita pastoral</option>
@@ -81,9 +105,10 @@ export default function Contact() {
                       <option value="outro" className="bg-dark-500">Outro assunto</option>
                     </select>
                   </div>
-                  <div><label htmlFor="message" className="block text-sm font-semibold text-white/70 mb-2">Mensagem</label><textarea id="message" required rows={5} placeholder="Escreva sua mensagem aqui..." className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm resize-none" /></div>
-                  <button type="submit" className="w-full btn-glass-white flex items-center justify-center gap-2 px-6 py-4 text-dark-600 rounded-xl font-semibold hover:bg-white transition-all duration-300 hover:scale-[1.02]">
-                    <Send className="w-5 h-5" /> Enviar Mensagem
+                  <div><label htmlFor="message" className="block text-sm font-semibold text-white/70 mb-2">Mensagem</label><textarea id="message" name="message" required rows={5} placeholder="Escreva sua mensagem aqui..." className="w-full glass-input px-4 py-3 rounded-xl text-white placeholder:text-white/25 text-sm resize-none" /></div>
+                  <button type="submit" disabled={loading} className="w-full btn-glass-white flex items-center justify-center gap-2 px-6 py-4 text-dark-600 rounded-xl font-semibold hover:bg-white transition-all duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed">
+                    {loading ? <span className="w-5 h-5 border-2 border-dark-600/30 border-t-dark-600 rounded-full animate-spin" /> : <Send className="w-5 h-5" />}
+                    {loading ? "Enviando..." : "Enviar Mensagem"}
                   </button>
                 </form>
               )}
